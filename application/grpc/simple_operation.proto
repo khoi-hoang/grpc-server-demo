@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "./grpc_simple_operation";
+
+message SimpleOperationRequest {
+    int64 first = 1;
+    int64 second = 2;
+}
+
+message SimpleOperationResponse {
+    int64 result = 1;
+}
+
+service SimpleOperation {
+    rpc Sum(SimpleOperationRequest) returns (SimpleOperationResponse);
+}

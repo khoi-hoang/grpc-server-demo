@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "./grpc_stream_operation";
+
+message OperationRequest {
+    int64 num = 1;
+}
+
+message OperationResponse {
+    int64 result = 1;
+}
+
+service StreamOperation {
+    rpc PrimeDecompose(OperationRequest) returns (stream OperationResponse);
+    rpc AverageClientStream(stream OperationRequest) returns (OperationResponse);
+    rpc AverageBidirectionalStream(stream OperationRequest) returns (stream OperationResponse);
+}
